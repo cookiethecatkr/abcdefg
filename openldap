@@ -2,3 +2,4 @@
 yum install db4-devel
 /usr/local/libexec/slapd
 /usr/local/etc/opendldap/slapd.conf
+/usr/local/libexec/slapd -f /usr/local/etc/openldap/slapd.conf
