@@ -1,0 +1,5 @@
+aws configure
+
+aws s3 ls s3://jin-test-001  //test connection
+aws s3 cp example.ldif s3://jin-test-001   // ec2 to s3
+aws s3 cp s3://jin-test-001 example.ldif //s3 to ec2 
