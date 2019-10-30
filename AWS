@@ -1,4 +1,5 @@
 aws configure
+export PATH="/usr/local/bin:$PATH"
 
 aws s3 ls s3://jin-test-001  //test connection
 aws s3 cp example.ldif s3://jin-test-001   // ec2 to s3
