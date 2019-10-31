@@ -11,3 +11,5 @@ cp slapd.conf.default slapd.conf
 echo -e "foo\nbar" > test.txt     // -e 
 
 more test.sink.txt 
+
+echo Another line >> test.txt
