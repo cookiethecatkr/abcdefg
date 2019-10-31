@@ -1,14 +1,27 @@
 tar -xzf kafka_2.12-2.3.0.tgz
 cd kafka_2.12-2.3.0
 
+#running zookeeper and kafka  (java 1.8+ required) 
 bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
 bin/kafka-server-start.sh -daemon config/server.properties
 nohup bin/zookeeper-server-start.sh config/zookeeper.properties
 nohup bin/kafka-server-start.sh config/server.properties
 
-//create a topic
-bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test\
+#create a topic
+bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
 bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 
+#quick producer, consumer test 
 bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+
+#How to check if Kafka or zookeeper is running.   
+netstat -ntlp 
+
+#describe topic 
+bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test
+
+#consumer-group
+bin/kafka-consumer-groups.sh  --list --bootstrap-server localhost:9092
+bin/kafka-consumer-groups.sh --describe --group mygroup --bootstrap-server localhost:9092
+// ./kafka-consumer-groups.sh --list --zookeeper hostname:potnumber
