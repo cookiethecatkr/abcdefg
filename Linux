@@ -9,3 +9,5 @@ export PATH="/usr/local/bin:$PATH"
 cp slapd.conf.default slapd.conf
 
 echo -e "foo\nbar" > test.txt     // -e 
+
+more test.sink.txt 
