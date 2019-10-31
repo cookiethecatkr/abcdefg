@@ -15,3 +15,8 @@ docker image 로 container 시작   ( 이 경우 죽으면 다시 안 살아남)
 
 kubectl 로 시작
 yaml 
+
+
+https://kubernetes.io/docs/reference/kubectl/overview/
+
+https://devtimes.com/bigdata/2019/01/25/kafka-cluster/
