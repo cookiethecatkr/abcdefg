@@ -1,0 +1,17 @@
+쿠버네티스에서 어떻게 hellow world? 
+
+docker command 어디서?
+
+
+현재 카픜카 상태 점검    
+1. netstat
+2. ps -ef 
+3. topic --list
+4. topic --describe
+
+
+docker image 로 container 시작   ( 이 경우 죽으면 다시 안 살아남) 
+-docker compose    dockerfile
+
+kubectl 로 시작
+yaml 
