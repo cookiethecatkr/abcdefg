@@ -7,3 +7,5 @@ yum info python*-pip
 export PATH="/usr/local/bin:$PATH"
 
 cp slapd.conf.default slapd.conf
+
+echo -e "foo\nbar" > test.txt     // -e 
