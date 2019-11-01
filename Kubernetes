@@ -1,0 +1,6 @@
+helm list  / helm delete {chart} /helm install --name {chart instance}  /helm upgrade /helm history {release name}
+helm rollback 
+
+ex) helm install --name helloworld ./helloworld/ 
+
+kubectl get deploy 
