@@ -1,29 +1,14 @@
+1.브로커, 컨수머, 프로듀서, 토픽 설정은 어떻게? 
 
+2. 어떤 것을 모니터링 해야 하나? 
 
-쿠버네티스에서 어디에 이미지 저장 되어 있나? 그 이미지 push/pull 이가능? (인터넷 환경)
-다커 이미지 관리시  hub   push/pull 가능?  업데이트시 이미지 재생성 
-
-#아파치 카프카 quickstart  
-https://kafka.apache.org/quickstart
-
-#컨플루언트 도커  
-https://docs.confluent.io/current/quickstart/ce-docker-quickstart.html?utm_medium=sem&utm_source=google&utm_campaign=ch.sem_br.nonbrand_tp.prs_tgt.kafka_mt.mbm_rgn.apac_lng.eng_dv.all&utm_term=%2Bkafka%20%2Bdocker&creative=367853264600&device=c&placement=&gclid=EAIaIQobChMIrIm1-s_H5QIVCA4rCh1WbA-hEAAYASAAEgINTvD_BwE
-
-
-
+3. 쿠버로 했을 때 고려해야 하는 상황 
 
 현재 카픜카 상태 점검    
 1. netstat
 2. ps -ef 
 3. topic --list
 4. topic --describe
-
-
-docker image 로 container 시작   ( 이 경우 죽으면 다시 안 살아남) 
--docker compose    dockerfile
-
-kubectl 로 시작
-yaml 
 
 
 https://kubernetes.io/docs/reference/kubectl/overview/
