@@ -4,3 +4,9 @@ helm rollback
 ex) helm install --name helloworld ./helloworld/ 
 
 kubectl get deploy 
+
+kubectl create deployment 
+
+kubectl get deployments / kubectl get pods / kubectl get events  / kubectl config view /kubectl get services  /kubectl get nodes
+
+kubectl describe pods /nodes /deployments
