@@ -1,3 +1,24 @@
 docker-compose up -d --build   
 
 Contorl center 9021 
+
+docker run -it <image> /bin/bash
+docker run -it -p 1389:1389 -p 1636:1636 -p 4444:4444 <image id> /bin/bash
+docker start <container>
+docker ps -f "status=exited" 
+
+docker cp test.ldif d96158d15958:/home
+
+docker exec -it <container> bash
+docker exec -u root -it <container> bash
+apt-get update   /  apt-get install vim 
+exit
+
+#stop container
+docker stop <container>
+
+#remove container
+docker container rm <container>
+
+#delete an image
+docker image rm <image>  /docker system prune /docker container prune 
