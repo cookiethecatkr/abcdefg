@@ -4,4 +4,7 @@ https://hub.helm.sh/charts/incubator/kafka
 # confluent (5.3.1)  
 https://github.com/confluentinc/cp-helm-charts
 
-
+kubectl create -f deployment.yaml  // 
+kubectl create -f service.yaml 
+kubectl apply -f deployment.yaml
+kubectl set image   // 이미지 변경
