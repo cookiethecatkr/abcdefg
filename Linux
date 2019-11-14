@@ -13,3 +13,5 @@ echo -e "foo\nbar" > test.txt     // -e
 more test.sink.txt 
 
 echo Another line >> test.txt     // > overwrites   >> appends 
+
+yum -y install @mysql  //install the latest version 
