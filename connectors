@@ -1,0 +1,6 @@
+curl localhost:8083
+
+curl localhost:8083/connector-plugins  // List the connector plugins available on this worker
+
+curl localhost:8083/connectors   //List active connectors on a worker 
+
