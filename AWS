@@ -7,3 +7,8 @@ aws s3 cp s3://jin-test-001/example.ldif example.ldif //s3 to ec2
 
 //how to add volume to ec2 instances 
 https://devopscube.com/mount-ebs-volume-ec2-instance/
+
+#format with ext4  
+mkfs.ext4 /dev/sdb1
+#format with XFS
+mkfs -t xfs /dev/xvdf 
