@@ -17,7 +17,7 @@ echo Another line >> test.txt     // > overwrites   >> appends
 yum -y install @mysql  //install the latest version 
 
 #systemd 
-systemctl status / systemctl start / systemctl stop / systemctl reload 
+systemctl status [] / systemctl start [] / systemctl stop []/ systemctl reload []
 
 #init
 service [ ] stop / service [ ] start / service [] restart 
