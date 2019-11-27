@@ -21,3 +21,7 @@ systemctl / systemctl start [] / systemctl stop []/ systemctl reload []
 
 #init    /   /etc/init.d
 service [ ] stop / service [ ] start / service [] restart 
+
+# Check installed packages 
+rpm -qa | grep Virtual
+which VirtualBox 
