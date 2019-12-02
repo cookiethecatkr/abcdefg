@@ -1,5 +1,6 @@
 helm list  / helm delete {chart} /helm install --name {chart instance}  /helm upgrade /helm history {release name}
 ex) kubectl delete service hello-minikube
+ex) kubectl delete deployment {name} 
 helm rollback 
 
 ex) helm install --name helloworld ./helloworld/ 
