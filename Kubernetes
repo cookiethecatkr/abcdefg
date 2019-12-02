@@ -10,3 +10,11 @@ kubectl create deployment
 kubectl get deployments / kubectl get pods / kubectl get events  / kubectl config view /kubectl get services  /kubectl get nodes
 
 kubectl describe pods /nodes /deployments
+
+#kafka
+helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
+helm fetch incubator/kafka   # 2019.07.23 - kafka-0.16.2.tgz
+tar -zxf kafka-0.16.2.tgz
+cd kafka
+cd ..
+helm install --name kafka --namespace kafka ./kafka
