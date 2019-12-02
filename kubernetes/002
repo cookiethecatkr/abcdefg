@@ -4,7 +4,7 @@ ex) kubectl delete deployment {name}
 helm rollback 
 
 ex) helm install --name helloworld ./helloworld/ 
-
+ex) helm upgrae  --name helloworld  ./helloworld/
 kubectl get deploy 
 
 kubectl create deployment 
@@ -23,4 +23,4 @@ kubectl create ns kafka
 helm install --name kafka --namespace kafka ./kafka   //old 
 //helm install kafka --namespace kafka ./kafka       //new
 //helm install my-kafka -f values.yaml incubator/kafka 
-
+helm upgrade kafka --namespace kafka ./kafka 
