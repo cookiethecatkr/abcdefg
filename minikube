@@ -1,3 +1,5 @@
 # Install minikube on EC2
 https://www.radishlogic.com/kubernetes/running-minikube-in-aws-ec2-ubuntu/
 
+minikube logs 
+sudo minikube logs -f 
