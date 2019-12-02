@@ -1,4 +1,5 @@
 helm list  / helm delete {chart} /helm install --name {chart instance}  /helm upgrade /helm history {release name}
+ex) kubectl delete service hello-minikube
 helm rollback 
 
 ex) helm install --name helloworld ./helloworld/ 
@@ -17,4 +18,8 @@ helm fetch incubator/kafka   # 2019.07.23 - kafka-0.16.2.tgz
 tar -zxf kafka-0.16.2.tgz
 cd kafka
 cd ..
-helm install --name kafka --namespace kafka ./kafka
+kubectl create ns kafka 
+helm install --name kafka --namespace kafka ./kafka   //old 
+//helm install kafka --namespace kafka ./kafka       //new
+//helm install my-kafka -f values.yaml incubator/kafka 
+
