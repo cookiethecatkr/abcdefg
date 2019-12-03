@@ -3,3 +3,4 @@ https://www.radishlogic.com/kubernetes/running-minikube-in-aws-ec2-ubuntu/
 
 minikube logs 
 sudo minikube logs -f 
+minikube start --vm-driver=none
