@@ -1,10 +1,19 @@
-#
+#distributed version control 
 git init 
 git status
-git add hello.js
-git commit -m "message" 
+git add hello.js          //add    working directory -> staging
+git commit -m "message"   //commit    staging -> repository
 git add .gitignore
 git diff <commit> / git diff <file> 
 git diff --staged 
-git log / git log --help 
+git log / git log --help /git log --grep="<string>"
 git show 
+git remote add origin <url>
+git clone 
+git push origin master   //push   repository -> remote 
+git pull origin master   //pull   remote -> repository 
+git pull = git fetch + git merge 
+git fetch 
+git checkout 
+git merge 
+git branch -r //list all the remote branches 
