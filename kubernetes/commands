@@ -12,6 +12,7 @@ kubectl create deployment
 kubectl get deployments / kubectl get pods / kubectl get events  / kubectl config view /kubectl get services  /kubectl get nodes
 
 kubectl describe pods /nodes /deployments
+watch kubectl get deployments,pods,services 
 
 #kafka
 helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
