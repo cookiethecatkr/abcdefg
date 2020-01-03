@@ -1,0 +1,9 @@
+git init 
+git status
+git add hello.js
+git commit -m "message" 
+git add .gitignore
+git diff <commit> / git diff <file> 
+git diff --staged 
+git log / git log --help 
+git show 
