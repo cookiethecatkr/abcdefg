@@ -5,6 +5,7 @@ helm rollback
 
 ex) helm install --name helloworld ./helloworld/ 
 ex) helm upgrade  --name helloworld  ./helloworld/
+helm install --name my-release stable/redis
 kubectl get deploy 
 
 kubectl create deployment 
