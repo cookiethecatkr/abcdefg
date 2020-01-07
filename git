@@ -2,11 +2,12 @@
 git init 
 git status
 git add hello.js          //add    working directory -> staging
-git commit -m "message"   //commit    staging -> repository
+git commit -m "message"   //commit    staging -> remote repository
 git add .gitignore
 git diff <commit> / git diff <file> 
 git diff --staged 
 git log / git log --help /git log --grep="<string>"
+git log --oneline
 git show 
 git remote add origin <url>
 git clone 
@@ -14,6 +15,11 @@ git push origin master   //push   repository -> remote
 git pull origin master   //pull   remote -> repository 
 git pull = git fetch + git merge 
 git fetch 
-git checkout 
+git checkout  // to clear any changes in the working directory. Undo changes.  
 git merge 
 git branch -r //list all the remote branches 
+git reset  // will move files back from the staging area to the working directory. 
+git reset --hard HEAD // git reset + git checkout 
+git revert //undo the commits 
+--no-edit //default commit message 
+git rebase // will unwind the changes you've made and replay the changes in the branch. 
