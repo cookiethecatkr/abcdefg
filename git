@@ -23,3 +23,8 @@ git reset --hard HEAD // git reset + git checkout
 git revert //undo the commits 
 --no-edit //default commit message 
 git rebase // will unwind the changes you've made and replay the changes in the branch. 
+git branch new_branch master
+git checkout new_branch  //git checkout -b <new branch name> => will create and checkout
+git branch  // list all the branches, -a  include remote branch, -v include the HEAD commit message 
+git checkout master , git merge new_branch
+git branch -d <branch_name>  // -d delete option 
