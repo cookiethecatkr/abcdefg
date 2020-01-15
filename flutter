@@ -1,0 +1,3 @@
+flutter doctor
+flutter run -d chrome
+flutter clean 
