@@ -1,3 +1,4 @@
 flutter doctor
 flutter run -d chrome
 flutter clean 
+flutter upgrade --force 
