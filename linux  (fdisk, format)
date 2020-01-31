@@ -1,0 +1,12 @@
+fdisk -l
+fdisk /dev/sdb
+mkfs.xfs -f /dev/sdb1
+mkfs.ext4 /dev/sdc1
+
+mount /dev/sdb1 /home
+df -T
+umount /dev/sdb1
+
+
+lsblk
+lspci  
