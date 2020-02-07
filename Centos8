@@ -1,6 +1,7 @@
 #java
 dnf search openjdk
 dnf install java-1.8.0-openjdk
+dnf list installed | less    (z , b ) 
 
 #kafka download
 wget http://us.mirrors.quenda.co/apache/kafka/2.4.0/kafka-2.4.0-src.tgz -O /opt/kafka.tgz
