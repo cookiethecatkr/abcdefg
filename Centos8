@@ -1,4 +1,5 @@
 #java
+dnf search openjdk
 dnf install java-1.8.0-openjdk
 
 #kafka download
