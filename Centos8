@@ -1,3 +1,7 @@
+#java
+dnf install java-1.8.0-openjdk
+
+#kafka download
 wget http://us.mirrors.quenda.co/apache/kafka/2.4.0/kafka-2.4.0-src.tgz -O /opt/kafka.tgz
 tar -xvf  [   ] 
 mv  kafka-2.4.0-aaaa  kafka
