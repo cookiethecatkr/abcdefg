@@ -8,6 +8,6 @@ unset JAVA_HOME
 
 
 #kafka download
-wget http://us.mirrors.quenda.co/apache/kafka/2.4.0/kafka-2.4.0-src.tgz -O /opt/kafka.tgz
+wget http://mirror.apache-kr.org/kafka/2.4.0/kafka_2.12-2.4.0.tgz -O /opt/kafka.tgz
 tar -xvf  [   ] 
 mv  kafka-2.4.0-aaaa  kafka
