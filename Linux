@@ -28,3 +28,27 @@ which VirtualBox
 
 # environment variables 
 printenv
+
+# OS
+uname --help
+uname -a     
+//Linux localhost.localdomain 2.6.32-504.el6.x86_64 #1 SMP Wed Oct 15 04:27:16 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+//Linux awshost 4.14.104-95.84.amzn2.x86_64 #1 SMP Sat Mar 2 00:40:20 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+
+/etc/redhat-release
+cat redhat-release   
+//CentOS release 6.6 (Final)
+
+/proc/version
+cat version
+//Linux version 4.14.104-95.84.amzn2.x86_64 (mockbuild@ip-10-0-1-219) (gcc version 7.3.1 20180303 (Red Hat 7.3.1-5) (GCC)) #1 SMP Sat Mar 2 00:40:20 UTC 2019
+//Linux version 2.6.32-504.el6.x86_64 (mockbuild@c6b9.bsys.dev.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-11) (GCC) ) #1 SMP Wed Oct 15 04:27:16 UTC 2014
+
+#firewall
+firewall-cmd --list-ports / firewall-cmd --get-zones
+firewall-cmd --permanent --add-port=389/tcp /firewall-cmd --permanent --remove-port=389/tcp
+firewall-cmd --reload
+
+systemctl stop firewalld / systemctl start firewalld  
+
+
