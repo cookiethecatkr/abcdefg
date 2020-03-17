@@ -1,0 +1,24 @@
+$ stop-ds --quiet
+$ import-ldif \
+ --offline \
+ --backendID dsEvaluation \
+ --includeBranch dc=example,dc=com \
+ --ldifFile generated.ldif
+ 
+ $ makeldif \
+ --outputLDIF generated.ldif \
+ --randomSeed 42 \
+ /path/to/opendj/config/MakeLDIF/example.template
+...LDIF processing complete....
+ 
+ /opt/opendj/setup --cli  
+ 
+ #How to change password 
+ 1. stop the server  2. encode-password.bat -s -SSHA512 -c password   3. config/config.ldif    4. restart 
+ 
+ windows replication
+ .\dsreplication.bat enable --host1 192.168.0.179 --port1 4444 --bindDN1 "cn=Directory Manager" --bindPassword1 password --replicationPort1 8989 --host2 192.168.0.184 --port2 4444 --bindDN2 "cn=Directory Manager" --bindPassword2 password --replicationPort2 8989 --adminUID admin --adminPassword password --baseDN "dc=example,dc=com" -X -n
+ 
+ initialzie
+ .\dsreplication.bat initialize --baseDN "dc=example,dc=com" --adminUID admin --adminPassword password --hostSource 192.168.0.179 --portSource 4444 --hostDestination 192.168.0.184 --portDestination 4444 -X -n
+ 
