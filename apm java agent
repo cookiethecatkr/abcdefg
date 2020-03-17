@@ -1,0 +1,11 @@
+#manual
+java -javaagent:elastic-apm-agent.jar -Delastic.apm.service_name=test -Delastic.apm.server_url=http://localhost:8200 -jar rest-services-cors-0.0.1-SNAPSHOT.jar
+
+#automatic
+java -jar apm-agent-attach-1.12.0-standalone.jar --pid 16832 --args 'service_name=test;server_urls=http://localhost:8200'
+
+#list runing JVMs
+java -jar apm-agent-attach-1.12.0-standalone.jar --list
+
+#Run a jar
+java -jar <jar name>
