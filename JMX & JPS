@@ -1,0 +1,6 @@
+jps -help 
+
+jps
+jps -m   //showing process arguments passed to the main method
+jps -l
+jps -v   //showing the JVM optiions passed to the process
