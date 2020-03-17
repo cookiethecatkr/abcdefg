@@ -25,3 +25,7 @@ bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test
 bin/kafka-consumer-groups.sh  --list --bootstrap-server localhost:9092
 bin/kafka-consumer-groups.sh --describe --group mygroup --bootstrap-server localhost:9092
 // ./kafka-consumer-groups.sh --list --zookeeper hostname:potnumber
+
+#windows process
+wmic process where "caption = 'java.exe' and commandline like '%server-1.properties%'" get processid
+
