@@ -1,0 +1,20 @@
+sudo service elasticsearch status 
+sudo service elasticsearch restart
+sudo systemctl restart elasticsearch 
+
+curl -X GET "localhost:9200/?pretty"
+curl -X GET "localhost:9200/_cat/health?v&pretty"
+
+curl -X PUT "localhost:9200/customer/_doc/1?pretty" -H 'Content-Type: application/json' -d'
+{
+  "name": "John Doe"
+}
+'
+curl -X GET "localhost:9200/customer/_doc/1?pretty"
+
+
+#elasticsearch.yml
+network.host: 127.0.0.1
+http.host: 0.0.0.0
+network.host:["localhost","192.168.0.89"]
+cluster.initial_master_nodes: ["192.168.0.89"] 
