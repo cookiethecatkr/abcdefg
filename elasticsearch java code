@@ -1,0 +1,50 @@
+public class elasticsearchTest {
+	
+	private static RestHighLevelClient client;
+	
+	private static synchronized RestHighLevelClient makeConnection() {
+		 
+	    if(client == null) {
+	        client = new RestHighLevelClient(
+	                RestClient.builder(
+	                        new HttpHost("localhost", 9200, "http")
+	                       ));
+	    }
+	    System.out.println("connected");
+	    return client;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		
+		makeConnection();
+		
+		IndexRequest request = new IndexRequest("posts"); 
+		request.id("1"); 
+		String jsonString = "{" +
+		        "\"user\":\"kimchy\"," +
+		        "\"postDate\":\"2013-01-30\"," +
+		        "\"message\":\"trying out Elasticsearch\"" +
+		        "}";
+		request.source(jsonString, XContentType.JSON); 
+		
+		IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+		String index = indexResponse.getIndex();
+		System.out.println(index);
+		String id = indexResponse.getId();
+		System.out.println(id);
+		
+		GetRequest getRequest = new GetRequest(
+		        "posts", 
+		        "1");   
+		GetResponse getResponse = client.get(getRequest, RequestOptions.DEFAULT);
+		String index1 = getResponse.getIndex();
+		String id1 = getResponse.getId();
+		System.out.println(index1);
+		System.out.println(id1);
+		long version = getResponse.getVersion();
+	    String sourceAsString = getResponse.getSourceAsString();  
+		System.out.println(version);
+		System.out.println(sourceAsString);
+		client.close();
+	}
+}
