@@ -1,0 +1,11 @@
+#sudo usermod -aG docker <본인의유저이름>
+sudo usermod -aG docker kafka
+sudo -i
+su kafka
+groups
+id kafka 
+
+groupdel docker
+
+#deluser user group
+deluser kafka docker
