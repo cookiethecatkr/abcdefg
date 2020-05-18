@@ -1,3 +1,7 @@
+#Linux find command 
+find . -name bash.*
+find / -name *bash*
+
 yum update -y    // -y option when used with any yum command assumes the answer to any question as yes. 
 
 dnf update --best --allowerasing    
