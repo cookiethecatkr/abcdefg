@@ -1,0 +1,40 @@
+# 유저 이름과 이메일 설정
+git config --global user.name 
+git config --global user.email
+
+# git 리포지토리 초기화 (해당 프로젝트 루트 디렉토리에서)
+git init 
+
+# remote source에서 git repository 복사하기
+git clone 
+
+# 변경된 파일들을 보여줌. (working directory 에서 마지막 commit 이후 변경된 파일) 
+git status
+
+# working directory의 변경된 파일을 stage 에 더함
+git add
+
+# 변경된 내용을 커밋함. 
+git commit -m "message" 
+
+# remote repository에 push하거나 pull함
+git pull  
+git push 
+
+# 모든 브랜치 나열
+git branch 
+
+# 다른 브랜치로 변경
+git checkout
+
+# 지금 커밋하지 않을 변경들을 저장
+git stash 
+
+# 작업 중인 2개의 브랜치를 통합 
+git merge 
+
+# 마지막으로 커밋된 상태로 되돌림
+git reset 
+
+# 어떤 리모트가 있는지 확인하거나 새로운 리모트 추가
+git remote 
