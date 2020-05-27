@@ -1,0 +1,20 @@
+# gcloud is the command-line tool for Google Cloud
+
+# Cloud Shell Command Line BigQuery 
+gcloud --help 
+gcloud -v   (version check) gc
+
+# list the active account name 
+gcloud auth list 
+gcloud config set project test-277201
+
+# bq to invoke the BigQuery command line tool
+# sahkespear 테이블의 schema 확인 
+bq show bigquery-public-data:samples.shakespeare
+
+# 기초 쿼리 예시 
+bq query --use_legacy_sql=false  'select * from `bigquery-public-data`.samples.shakespeare'
+
+# dataset 나열
+bq ls 
+bq ls bigquery-public-data:   (특정 프로젝트 안의 데이터 세트 나열) 
