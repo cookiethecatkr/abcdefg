@@ -1,11 +1,13 @@
-kaggle - data science community
+1. kaggle - data science community
 https://www.kaggle.com
  - kaggle을 사용하여 빅쿼리에 접속 가능 
  - 퍼블릭 데이터셋에 매달 5TB 쿼리 가능
  - 유용한 교육과 실습 제공 
  - R/Python 사용
  
- BigQuery Export schema 
+2. BigQuery Export schema 
  https://support.google.com/analytics/answer/3437719?hl=en
  
- 
+3. https://google.qwiklabs.com
+크레딧 없어도 활용할 수 있음. 
+스크립트, 코드 참고 가능
