@@ -11,6 +11,13 @@ SELECT
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`
 WHERE visitId = 1501570398
 
+SELECT
+ hits.page.pagePath 
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`
+LIMIT
+  1000
+
 #Unnest 함수 사용해서 해결
 SELECT DISTINCT
   visitId,
@@ -19,3 +26,10 @@ FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`,
 UNNEST(hits) AS h
 WHERE visitId = 1501570398
 LIMIT 10
+
+SELECT
+ page.pagePath 
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`, unnest(hits)
+LIMIT
+  1000
