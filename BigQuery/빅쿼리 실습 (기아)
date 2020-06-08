@@ -2,7 +2,7 @@
 SELECT 
 sum(totals.visits)
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` 
-LIMIT 1000
+LIMIT 1000  --limit 주의사항 
 
 # 국가별 세션 수 
 SELECT
