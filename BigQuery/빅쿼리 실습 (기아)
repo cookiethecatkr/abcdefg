@@ -1,0 +1,32 @@
+#Number of Sessions 
+SELECT 
+sum(totals.visits)
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` 
+LIMIT 1000
+
+#Number of Sessions & Non-interactive Visits 
+#It is possible to have a visit with a non-interactive event that will create a new row in the BQ table, 
+#but will not count as a session in Google Analytics (interestingly, it will count as a user).
+SELECT 
+count(*)
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` 
+LIMIT 1000
+
+# The number of users can be calculated by counting a distinct number of client ids or fullVisitorIds.
+SELECT 
+count(distinct fullVisitorId) 
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` 
+LIMIT 1000
+
+  # date range, union 쿼리 안써도 됨. * 와 _table_suffix 사용
+SELECT
+  SUM(totals.visits)
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+WHERE
+  _table_suffix BETWEEN "20170801"
+  AND "20170831"
+LIMIT
+  1000
+  
+  
