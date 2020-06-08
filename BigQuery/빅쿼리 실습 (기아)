@@ -15,8 +15,21 @@ GROUP BY
 ORDER BY
   2 DESC
 LIMIT 5
-  
 
+# 다른 방법 
+SELECT
+  geoNetwork.country AS Country,
+  COUNT(DISTINCT CONCAT(fullVisitorId, CAST(visitStartTime AS STRING))) AS Sessions
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_20160801`
+WHERE
+  totals.visits = 1
+GROUP BY
+  Country
+ORDER BY
+  Sessions DESC
+LIMIT
+  5
 
 
 #Number of Sessions & Non-interactive Visits 
