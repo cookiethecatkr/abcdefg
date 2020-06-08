@@ -4,6 +4,21 @@ sum(totals.visits)
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` 
 LIMIT 1000
 
+# 국가별 세션 수 
+SELECT
+  geoNetwork.country AS Country,
+  SUM(totals.visits) AS Sessions
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_20160801`
+GROUP BY
+  1
+ORDER BY
+  2 DESC
+LIMIT 5
+  
+
+
+
 #Number of Sessions & Non-interactive Visits 
 #It is possible to have a visit with a non-interactive event that will create a new row in the BQ table, 
 #but will not count as a session in Google Analytics (interestingly, it will count as a user).
