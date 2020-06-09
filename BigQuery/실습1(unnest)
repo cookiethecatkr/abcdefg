@@ -43,10 +43,12 @@ CROSS JOIN
 LIMIT
   1000
 
---- , 
+-- , 
 SELECT
  page.pagePath 
 FROM
   `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`, unnest(hits)
 LIMIT
   1000
+
+##
