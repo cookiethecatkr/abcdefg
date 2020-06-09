@@ -33,6 +33,17 @@ UNNEST(hits) AS h
 WHERE visitId = 1501570398
 LIMIT 10
 
+--cross join
+SELECT
+  page.pagePath
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`
+CROSS JOIN
+  UNNEST(hits)
+LIMIT
+  1000
+
+--- , 
 SELECT
  page.pagePath 
 FROM
