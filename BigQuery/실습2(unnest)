@@ -1,0 +1,92 @@
+#  With As syntax (common table expression, CTE) 
+WITH example_data AS(
+      SELECT 
+        'kyle' AS name,
+        ['Python', 'SQL', 'R', 'Julia', 'Go'] AS preferred_language, 
+        31 AS age
+      UNION ALL
+      SELECT 
+        'max' AS name,
+        ['Python', 'SQL', 'Scala', 'Java', 'Kotlin'] AS preferred_language, 
+        29 AS age
+      UNION ALL
+      SELECT
+        'yun' AS name,
+        ['Python', 'SQL'] AS preferred_language, 
+        28 AS age
+      )
+		
+  SELECT 
+    name, preferred_language, age
+  FROM example_data
+  
+  
+  # where 절의 조건을 줌 - 배열인데 String과 비교하니 타입이 안맞어 오류
+  WITH example_data AS(
+      SELECT 
+        'kyle' AS name,
+        ['Python', 'SQL', 'R', 'Julia', 'Go'] AS preferred_language, 
+        31 AS age
+      UNION ALL
+      SELECT 
+        'max' AS name,
+        ['Python', 'SQL', 'Scala', 'Java', 'Kotlin'] AS preferred_language, 
+        29 AS age
+      UNION ALL
+      SELECT
+        'yun' AS name,
+        ['Python', 'SQL'] AS preferred_language, 
+        28 AS age
+      )
+		
+  SELECT 
+    name, preferred_language, age
+  FROM example_data
+  WHERE preferred_language = 'Julia' 
+  
+  
+  #unnest 사용 (필터링 이전) 
+  WITH example_data AS(
+      SELECT 
+        'kyle' AS name,
+        ['Python', 'SQL', 'R', 'Julia', 'Go'] AS preferred_language, 
+        31 AS age
+      UNION ALL
+      SELECT 
+        'max' AS name,
+        ['Python', 'SQL', 'Scala', 'Java', 'Kotlin'] AS preferred_language, 
+        29 AS age
+      UNION ALL
+      SELECT
+        'yun' AS name,
+        ['Python', 'SQL'] AS preferred_language, 
+        28 AS age
+      )
+		
+  SELECT 
+    name, prefer_lang, age
+  FROM example_data, UNNEST(example_data.preferred_language) as prefer_lang
+  
+  
+  # unnest와  where 절 사용 
+  WITH example_data AS(
+      SELECT 
+        'kyle' AS name,
+        ['Python', 'SQL', 'R', 'Julia', 'Go'] AS preferred_language, 
+        31 AS age
+      UNION ALL
+      SELECT 
+        'max' AS name,
+        ['Python', 'SQL', 'Scala', 'Java', 'Kotlin'] AS preferred_language, 
+        29 AS age
+      UNION ALL
+      SELECT
+        'yun' AS name,
+        ['Python', 'SQL'] AS preferred_language, 
+        28 AS age
+      )
+		
+  SELECT 
+    name, prefer_lang, age
+  FROM example_data, UNNEST(example_data.preferred_language) as prefer_lang
+  WHERE prefer_lang = 'Julia'
