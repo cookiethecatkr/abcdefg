@@ -1,0 +1,15 @@
+# *  syntax returns all fields ofr that struct. 
+SELECT 
+totals.*,
+device.*
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` LIMIT 1000
+
+
+# 특수 케이스 
+SELECT
+  hits.*
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`,
+  UNNEST(hits) AS hits
+LIMIT
+  1000
