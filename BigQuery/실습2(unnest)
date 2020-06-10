@@ -35,15 +35,23 @@ LIMIT 10
 
 --cross join
 SELECT
-  page.pagePath
+  hits.page.pagePath
 FROM
   `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`
 CROSS JOIN
-  UNNEST(hits)
+  UNNEST(hits) as hits
 LIMIT
   1000
 
--- , 
+-- cross join  as 없이 
+SELECT
+ page.pagePath 
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` cross join unnest(hits) 
+LIMIT
+  1000
+
+-- cross join 대신 , 
 SELECT
  page.pagePath 
 FROM
@@ -51,4 +59,10 @@ FROM
 LIMIT
   1000
 
-##
+-- unnest 대신 다른 방법 
+SELECT
+ hits.page.pagePath 
+FROM
+  `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` as r , r.hits
+LIMIT
+  1000
