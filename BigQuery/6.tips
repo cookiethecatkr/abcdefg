@@ -5,9 +5,14 @@ https://www.kaggle.com
  - 유용한 교육과 실습 제공 
  - R/Python 사용
  
-2. BigQuery Export schema 
- https://support.google.com/analytics/answer/3437719?hl=en
- 
+2. - BigQuery Analytics360 Export schema 
+   https://support.google.com/analytics/answer/3437719?hl=en
+ - BigQuery Firebase Export schema
+   https://support.google.com/firebase/answer/7029846?hl=en
+ - BigQuery CookBook 
+   https://support.google.com/analytics/answer/4419694?hl=en
+
 3. https://google.qwiklabs.com
 크레딧 없어도 활용할 수 있음. 
 스크립트, 코드 참고 가능
+https://www.qwiklabs.com/focuses/1797?parent=catalog
