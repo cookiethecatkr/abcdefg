@@ -1,9 +1,8 @@
-# *  syntax returns all fields ofr that struct. 
+# *  syntax returns all fields of that struct. 
 SELECT 
 totals.*,
 device.*
 FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` LIMIT 1000
-
 
 # 특수 케이스 
 SELECT
@@ -14,7 +13,7 @@ FROM
 LIMIT
   1000
 
-# struct schema  
+# struct schema  이해
 name string
 address record 
 address.street
@@ -22,6 +21,16 @@ address.city
 
 insert `Golden_Planet.test12` (name,  address) 
 values ("jinlee", ("a","b"))
+
+# struct & array schema  이해
+name string
+address record
+address.street string
+address.city repeated 
+
+insert `Golden_Planet.test` ( name, address)
+values ("jin", ("a", ["b","c","d","e"]))
+
 
 # struct and array 실습 
 # 테이블 json으로 생성 
