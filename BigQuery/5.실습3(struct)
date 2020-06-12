@@ -13,3 +13,103 @@ FROM
   UNNEST(hits) AS hits
 LIMIT
   1000
+
+# struct schema  
+name string
+address record 
+address.street
+address.city
+
+insert `Golden_Planet.test12` (name,  address) 
+values ("jinlee", ("a","b"))
+
+# struct and array 실습 
+# 테이블 json으로 생성 
+[
+    { 
+        "name": "FIRST_NAME",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    { 
+        "name": "MIDDLE_NAMES",
+        "type": "STRING",
+        "mode": "REPEATED"
+    },
+    { 
+        "name": "LAST_NAME",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    { 
+        "name": "DATE_OF_BIRTH",
+        "type": "DATE",
+        "mode": "REQUIRED"
+    },
+    { 
+        "name": "ADDRESS",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            { 
+                "name": "STREET",
+                "type": "STRING",
+                "mode": "REQUIRED"
+            },
+            { 
+                "name": "CITY",
+                "type": "STRING",
+                "mode": "REQUIRED"
+            },
+            { 
+                "name": "ZIP_CODE",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            { 
+                "name": "COUNTRY",
+                "type": "STRING",
+                "mode": "REQUIRED"
+            }
+        ]
+    },
+    { 
+        "name": "SECONDARY_ADDRESS",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            { 
+                "name": "STREET",
+                "type": "STRING",
+                "mode": "REQUIRED"
+            },
+            { 
+                "name": "CITY",
+                "type": "STRING",
+                "mode": "REQUIRED"
+            },
+            { 
+                "name": "ZIP_CODE",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            { 
+                "name": "COUNTRY",
+                "type": "STRING",
+                "mode": "REQUIRED"
+            }
+        ]
+    }    
+]
+
+# insert values 
+
+INSERT INTO `project.dataset.person_table` (FIRST_NAME, MIDDLE_NAMES, LAST_NAME, DATE_OF_BIRTH, ADDRESS, SECONDARY_ADDRESS)
+VALUES
+    ("Jeff", ["Pierre", "Jack"], "Smith", "1980-10-10", ("#1 7th Avenue", "New York", "100011", "United States"), [("3Bis Avenue des Champs Élysées", "Paris", "75008", "France")]),
+    ("Charlotte", ["Marie"], "Lalande", "1990-01-01", ("3Bis Avenue des Champs Élysées", "Paris", STRING(NULL), "France"), NULL)
+
+# reference - https://www.adaltas.com/en/2019/11/22/bigquery-insert-complex-column/
+
+
+
