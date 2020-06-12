@@ -118,6 +118,13 @@ VALUES
     ("Jeff", ["Pierre", "Jack"], "Smith", "1980-10-10", ("#1 7th Avenue", "New York", "100011", "United States"), [("3Bis Avenue des Champs Élysées", "Paris", "75008", "France")]),
     ("Charlotte", ["Marie"], "Lalande", "1990-01-01", ("3Bis Avenue des Champs Élysées", "Paris", STRING(NULL), "France"), NULL)
 
+# 2번째 
+INSERT INTO `Golden_Planet.temp`  (FIRST_NAME, MIDDLE_NAMES, LAST_NAME, DATE_OF_BIRTH, ADDRESS, SECONDARY_ADDRESS)
+VALUES
+    ("Jeff", ["Pierre", "Jack"], "Smith", "1980-10-10", ("#1 7th Avenue", "New York", "100011", "United States"), [("3Bis Avenue des Champs Élysées", "Paris", "75008", "France"),("SiheungDaero", "Seoul", "11111", "Korea")]),
+    ("Charlotte", ["Marie"], "Lalande", "1990-01-01", ("3Bis Avenue des Champs Élysées", "Paris", STRING(NULL), "France"), NULL)
+
+
 # reference - https://www.adaltas.com/en/2019/11/22/bigquery-insert-complex-column/
 
 
