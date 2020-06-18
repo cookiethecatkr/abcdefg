@@ -1,0 +1,18 @@
+pd.DataFrame({'Yes':[50,21], 'No':[131,2]}, index=['Product A', 'Product B'])
+
+pd.Series([30,35,40], index=['2015 Sales', '2016 Sales', '2017 Sales'], name='Product A')
+
+a = pd.read_csv("...path....csv")
+a.shape
+a.head()
+
+object.property(attribute)   ex) reviews.country     reviews['country']   reviews['country'][0]
+reviews.iloc[0]
+reviews.iloc[:, 0]
+reviews.iloc[:3, 0] 
+reviews.iloc[1:3, 0]
+reviews.iloc[[0,1,2],0]
+revies.iloc[-5:]
+reviews.loc[0, 'country']
+
+& ampersand  * wildcard 
