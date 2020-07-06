@@ -1,0 +1,13 @@
+SELECT
+date,
+SUM(totals.visits) AS visits,
+SUM(totals.pageviews) AS pageviews,
+SUM(totals.transactions) AS transactions,
+SUM(totals.transactionRevenue)/1000000 AS revenue
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+WHERE
+_TABLE_SUFFIX BETWEEN FORMAT_DATE('%Y%m%d',DATE_SUB(CURRENT_DATE(), INTERVAL 1095 DAY))
+AND
+FORMAT_DATE('%Y%m%d',DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY))
+GROUP BY date
+ORDER BY date ASC
