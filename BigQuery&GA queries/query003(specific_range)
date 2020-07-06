@@ -1,0 +1,11 @@
+SELECT
+date,
+SUM(totals.visits) AS visits,
+SUM(totals.pageviews) AS pageviews,
+SUM(totals.transactions) AS transactions,
+SUM(totals.transactionRevenue)/1000000 AS revenue
+FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+WHERE
+_TABLE_SUFFIX BETWEEN '20160801' AND '20170731'
+GROUP BY date
+ORDER BY date ASC
