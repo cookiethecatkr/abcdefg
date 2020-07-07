@@ -1,0 +1,20 @@
+# What is the average amount of money spent per session in July 2017?
+
+SELECT
+( SUM(total_transactionrevenue_per_user) / SUM(total_visits_per_user) ) AS
+avg_revenue_by_user_per_visit
+FROM (
+SELECT
+fullVisitorId,
+SUM( totals.visits ) AS total_visits_per_user,
+SUM( totals.transactionRevenue ) AS total_transactionrevenue_per_user
+FROM
+`bigquery-public-data.google_analytics_sample.ga_sessions_*`
+WHERE
+_TABLE_SUFFIX BETWEEN '20170701' AND '20170731'
+AND
+totals.visits > 0
+AND totals.transactions >= 1
+AND totals.transactionRevenue IS NOT NULL
+GROUP BY
+fullVisitorId )
