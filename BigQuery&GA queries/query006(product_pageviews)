@@ -1,0 +1,15 @@
+# # What was the average number of product pageviews for users who made a purchase in July 2017?
+
+SELECT
+( SUM(total_pagesviews_per_user) / COUNT(users) ) AS avg_pageviews_per_user
+FROM
+SELECT
+fullVisitorId AS users,
+SUM(totals.pageviews) AS total_pagesviews_per_user
+FROM`bigquery-public-data.google_analytics_sample.ga_sessions_*`
+WHERE
+_TABLE_SUFFIX BETWEEN '20170701' AND '20170731'
+AND
+totals.transactions >=1
+GROUP BY
+users )
