@@ -1,0 +1,15 @@
+# What was the average total transactions per user that made a purchase in July 2017?
+
+SELECT
+(SUM (total_transactions_per_user) / COUNT(fullVisitorId) ) AS avg_total_transactions_per_user
+FROM (
+SELECT
+fullVisitorId,
+SUM (totals.transactions) AS total_transactions_per_user
+FROM
+`bigquery-public-data.google_analytics_sample.ga_sessions_*`
+WHERE
+_TABLE_SUFFIX BETWEEN '20170701' AND '20170731'
+AND totals.transactions IS NOT NULL
+GROUP BY
+fullVisitorId )
