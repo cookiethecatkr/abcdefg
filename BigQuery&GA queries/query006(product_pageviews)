@@ -13,3 +13,6 @@ AND
 totals.transactions >=1
 GROUP BY
 users )
+
+# 
+--totals.transactions IS NULL
