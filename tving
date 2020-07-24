@@ -1,1 +1,3 @@
+gcloud config set project <본인프로젝트명>
+
 bq query --use_legacy_sql=false 'select * from `bigquery-public-data`.samples.shakespeare'
