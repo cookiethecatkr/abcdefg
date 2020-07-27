@@ -1,0 +1,38 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+<script>
+function encrypt(message = '', key = ''){
+    var message = CryptoJS.AES.encrypt(message, key, {padding: CryptoJS.pad.Pkcs7, mode: CryptoJS.mode.CBC});
+    return message.toString();
+}
+function decrypt(message = '', key = ''){
+    var code = CryptoJS.AES.decrypt(message, key, {padding: CryptoJS.pad.Pkcs7, mode: CryptoJS.mode.CBC});
+   // var code = CryptoJS.AES.decrypt(message, key, {format: CryptoJS.format.Hex});
+    //var decryptedMessage = code.toString(CryptoJS.enc.Utf8);
+   //var decryptedMessage = code.toString(CryptoJS.enc.stringify);
+   // var decryptedMessage = code.toString(CryptoJS.enc.Base64.parse);
+    //var a = CryptoJS.enc.Base64.parse(base64);
+    //var decryptedMessage = a.toString(CryptoJS.enc.Utf8);
+   
+    //어느 정도 동작
+   //var decryptedMessage = code.words;
+   // # 암호화 된 값은 배열 (array)
+    //var decryptedMessage = code;   
+   var decryptedMessage = code.toString(CryptoJS.enc.Utf8);    
+   //var decryptedMessage = code.toString(CryptoJS.enc.Hex);  
+  // var decryptedMessage = CryptoJS.enc.Hex.stringify(code);  
+  // var decryptedMessage = CryptoJS.enc.Hex.parse(code);  
+   //var a = CryptoJS.enc.Hex.parse(code);
+  //var decryptedMessage = CryptoJS.enc.Hex.stringify(a);  
+  // var a = CryptoJS.enc.Utf8.parse(code);
+ // var decryptedMessage = CryptoJS.enc.Utf8.stringify(a);  
+ 
+    return decryptedMessage;
+}
+console.log(encrypt(' userCode | test','FDS_13@#$~Z?#@#&><'));
+console.log(encrypt(' ["a","b","c"]','FDS_13@#$~Z?#@#&><'));
+console.log(decrypt('U2FsdGVkX19niXnaTV5PGp+v3dYa0ARVd8JKWKPf5R7B6BRX+lsZmKlH/6cNecn8','FDS_13@#$~Z?#@#&><'))
+console.log(decrypt('U2FsdGVkX183HVY7TITobQ05GJ4Kl35oSiXN3liocKM=','FDS_13@#$~Z?#@#&><'))
+
+</script>
+</head>
