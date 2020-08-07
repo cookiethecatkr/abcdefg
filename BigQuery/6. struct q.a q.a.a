@@ -1,0 +1,8 @@
+insert into dateam.jin_pro.qa  (q)  values ( [struct( ['a','b']) ]  )
+
+[struct (   ) ]
+
+array<struct< >>
+
+insert into dateam.jin_pro.qaa (q) values ( [struct([struct(['a'])])] )
+insert into dateam.jin_pro.qaa (q) values ( [struct([struct(['a','b','c'])])] )
