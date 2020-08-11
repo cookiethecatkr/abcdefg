@@ -1,0 +1,18 @@
+# unnest 사용 
+SELECT c.index  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` 
+, unnest(hits) as a
+, unnest(a.product) as b     
+, unnest(b.customdimensions) as c 
+
+# aliasing 생략하고 
+SELECT index  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` 
+, unnest(hits) 
+, unnest(product) as product    -- customdimensions 필드가 3개가 있습니다.  3개 중 product의 customdimenions 필드라는 것을 명시하기 위해서 이 부분은 aliasing이 필요합니다. 때론 a
+-- alissing 안해도 실행되기도 합니다. 아마 빅쿼리에서 3개중에 임의로 파싱해서인데 랜덤 인식입니다. 
+, unnest(product.customdimensions) 
+
+# unnest 사용하지 않고 
+SELECT index  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` as r , r.hits as a, a.product as b, b.customdimensions 
+
+# comma 대신 cross join 
+SELECT index  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_20170801` as r cross join r.hits as a cross join a.product as b cross join b.customdimensions 
