@@ -1,0 +1,11 @@
+gstuil version -l
+
+gsutil ls
+
+gsutil mv gs://my_bucket/* dir
+gsutil mv ./dir gs://my_bucket
+
+gsutil cp *.txt gs://my-bucket
+gsutil cp gs://my-bucket/*.txt .
+
+gsutil -m cp -r dir gs://my-bucket   (-m option   parallel  -r entire directory) 
