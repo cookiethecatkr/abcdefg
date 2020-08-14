@@ -1,0 +1,4 @@
+sudo apt-get updatesudo
+sudo apt-get insatll < > 
+
+dpkg -L elasticsearch
