@@ -6,3 +6,10 @@ array<struct< >>
 
 insert into dateam.jin_pro.qaa (q) values ( [struct([struct(['a'])])] )
 insert into dateam.jin_pro.qaa (q) values ( [struct([struct(['a','b','c'])])] )
+
+
+--insert into dateam.jin_pro.array_struct_test (name, a) values ( "jin",   [struct( "","c",struct( "f"))]   ) 
+
+update dateam.jin_pro.array_struct_test 
+set a = [struct( "a","c",struct( "f"))]
+where name = "jin"
