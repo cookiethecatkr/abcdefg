@@ -9,3 +9,5 @@ gsutil cp *.txt gs://my-bucket
 gsutil cp gs://my-bucket/*.txt .
 
 gsutil -m cp -r dir gs://my-bucket   (-m option   parallel  -r entire directory) 
+
+gsutil du -h -s gs://jin_pro_test
