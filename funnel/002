@@ -1,0 +1,39 @@
+SELECT
+  COUNT(DISTINCT funnel_1) AS f1_users,
+  COUNT(DISTINCT funnel_2) AS f2_users
+FROM (
+  SELECT
+  IF
+    (event_category_and_action = "event_category_event_label_1",
+      fullVisitorId,
+      NULL) AS funnel_1,
+  IF
+    (event_category_and_action = "event_category_event_label_1"
+      AND next_event = "event_category_event_label_2",
+      fullVisitorId,
+      NULL) AS funnel_2
+  FROM (
+    SELECT
+      event_category_and_action,
+      fullVisitorId,
+      hit_timestamp,
+      LEAD(event_category_and_action, 1) OVER (PARTITION BY fullVisitorId ORDER BY hit_timestamp) AS next_event
+    FROM (
+      SELECT
+        CONCAT(CAST(hits.eventInfo.eventCategory AS string), "_", CAST(hits.eventInfo.eventAction AS string)) AS event_category_and_action,
+        fullVisitorId,
+        FORMAT_TIMESTAMP("%Y-%m-%d %H:%M:%S", TIMESTAMP_SECONDS(SAFE_CAST(visitStartTime+hits.time/1000 AS INT64)), "America/Los_Angeles") AS hit_timestamp,
+      FROM
+        `pro-tracker-id.ga_sessions_20*`,
+        UNNEST(hits) AS hits
+      WHERE
+        (_TABLE_SUFFIX BETWEEN '200101'AND '200415'
+          AND REGEXP_CONTAINS (hits.eventInfo.eventCategory, r'^event_category')
+          AND REGEXP_CONTAINS (hits.eventInfo.eventAction, r'^event_label_1|event_label_2'))
+      GROUP BY
+        fullVisitorId,
+        event_category_and_action,
+        hit_timestamp
+      ORDER BY
+        2,
+        3)))
