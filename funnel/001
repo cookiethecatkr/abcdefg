@@ -1,0 +1,61 @@
+#standardSQL
+WITH arrAgg AS (
+  SELECT
+    fullvisitorid,
+    -- concatenate arrays over multiple sessions
+    ARRAY_CONCAT_AGG(hits ORDER BY visitstarttime ASC) userHits
+  FROM
+    `google.com:analytics-bigquery.LondonCycleHelmet.ga_sessions_20130910`
+  GROUP BY 1
+)
+, journey AS (
+  SELECT 
+    fullvisitorId,
+    -- get a proper running index with combination of unnest and offset of aggregated hits array
+    ARRAY( (SELECT AS STRUCT index+1 as hitNumber, page FROM UNNEST(userHits) WITH OFFSET AS index)) as hits
+  FROM arrAgg
+)
+
+SELECT * FROM journey
+When you run this you can see the new "raw material". In the first step I concatenate the hits, in the second step I make a proper index for the pages and put eerything back into a "hits" array.
+
+You can build your user journey using cross joins and comparing steps and sequence of the page:
+
+#standardSQL
+WITH arrAgg AS (
+  SELECT
+    fullvisitorid,
+    SUM(totals.visits) sessions,
+    -- concatenate arrays over multiple sessions
+    ARRAY_CONCAT_AGG(hits ORDER BY visitstarttime ASC) userHits
+  FROM
+    `google.com:analytics-bigquery.LondonCycleHelmet.ga_sessions_20130910`
+  GROUP BY 1
+)
+, journey AS (
+  SELECT 
+    fullvisitorId,
+    sessions,
+    -- get a proper running index with combination of unnest and offset of aggregated hits array
+    ARRAY( (SELECT AS STRUCT index+1 as hitNumber, page FROM UNNEST(userHits) WITH OFFSET AS index WHERE type='PAGE')) as hits
+  FROM arrAgg
+)
+-- funnel: homepage: /, login: /login.html, basket: /basket.html, confirm: /confirm.html
+SELECT 
+  SUM(sessions) allSessions,
+  COUNT(1) allUsers,
+  -- check if any page was home page
+  SUM( (SELECT IF( LOGICAL_OR(page.pagePath='/'), 1, 0) FROM j.hits) ) step1_home,
+  -- cross join hits array with itself: combination of all pages with all pages: any of those combinations our two pages? came home before login?: if yes for any given amount add up 1
+  SUM( (SELECT IF( LOGICAL_OR(a.page.pagePath='/' AND b.page.pagePath='/login.html' AND a.hitNumber < b.hitNumber) ,1, 0 ) FROM j.hits a CROSS JOIN j.hits b) ) step2_login,
+  -- extend cross join principle to a third page
+  SUM( (SELECT IF( LOGICAL_OR(
+      a.page.pagePath='/' AND b.page.pagePath='/login.html' AND c.page.pagePath='/basket.html' AND
+      a.hitNumber < b.hitNumber AND b.hitNumber < c.hitNumber 
+      ) ,1, 0 ) FROM j.hits a CROSS JOIN j.hits b CROSS JOIN j.hits c) ) step3_basket,
+  -- extend cross join principle to a fourth page
+  SUM( (SELECT IF( LOGICAL_OR(
+      a.page.pagePath='/' AND b.page.pagePath='/login.html' AND c.page.pagePath='/basket.html' AND d.page.pagePath='/confirm.html' AND
+      a.hitNumber < b.hitNumber AND b.hitNumber < c.hitNumber AND c.hitNumber < d.hitNumber
+      ) ,1, 0 ) FROM j.hits a CROSS JOIN j.hits b CROSS JOIN j.hits c CROSS JOIN j.hits d) ) step4_confirm
+FROM journey j
