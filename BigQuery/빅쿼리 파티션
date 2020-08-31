@@ -1,0 +1,26 @@
+빅쿼리는 저장소가 아니기 때문에 디폴트 60일 테이블 
+
+빅쿼리 UI 에서 데이터셋 생성시   table expiration 설정 가능. 개별이 아닌듯. 모든 테이블  ( 파티션 설정 x ) 
+빅쿼리 UI 에서 테이블 생성시 partition 설정가능.  (파티션 expiration 설정 x) 
+
+DDL 이나 bq 커맨드 사용
+
+# 파티션 유효기간
+ALTER TABLE jin_pro.mytable
+ SET OPTIONS (
+   -- Sets partition expiration to 5 days
+   partition_expiration_days=7
+ )
+ 
+#테이블 유효기간 수정 
+ALTER TABLE jin_pro.mytable
+ SET OPTIONS (
+   -- Sets table expiration to timestamp 2025-02-03 12:34:56
+   expiration_timestamp=TIMESTAMP "2025-02-03 12:34:56"
+ )
+ 
+
+만약 파티션 유효기간과 테이블 유효기간을 생성시 설정하고 싶으면 bq command 
+ # 2592000 = 30 일    259200 = 3일 
+bq mk -t --expiration 2592000 --time_partitioning_type=DAY --time_partitioning_expiration 259200 jin_pro.test name:STRING,age:INT64
+
